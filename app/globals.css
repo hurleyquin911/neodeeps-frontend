@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   Neodeeps Design System
+   Primary   : #14B8A6  (teal-500)
+   Secondary : #F59E0B  (amber-500)
+   Background: #FAFAFA
+   Surface   : #FFFFFF
+   Text      : #111827  (gray-900)
+   ───────────────────────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand tokens */
+  --brand-primary:        #14B8A6;
+  --brand-primary-dark:   #0F766E;
+  --brand-primary-soft:   #CCFBF1;
+  --brand-primary-glow:   rgba(20, 184, 166, 0.28);
+
+  --brand-secondary:      #F59E0B;
+  --brand-secondary-dark: #B45309;
+  --brand-secondary-soft: #FEF3C7;
+
+  --brand-bg:             #FAFAFA;
+  --brand-surface:        #FFFFFF;
+  --brand-text:           #111827;
+  --brand-muted:          #6B7280;
+  --brand-border:         #E5E7EB;
+
+  /* Alias — dipakai oleh komponen lama maupun baru */
+  --neo-bg:          var(--brand-bg);
+  --neo-bg-strong:   #F3F4F6;
+  --neo-surface:     var(--brand-surface);
+  --neo-ink:         var(--brand-text);
+  --neo-muted:       var(--brand-muted);
+
+  /* Primary accent (teal) menggantikan coral lama */
+  --neo-coral:       var(--brand-primary);
+  --neo-coral-soft:  var(--brand-primary-soft);
+  --neo-peach:       #F0FDFA;
+
+  /* Secondary accent (amber) */
+  --neo-sun:         var(--brand-secondary);
+  --neo-teal:        var(--brand-primary-dark);
+  --neo-teal-soft:   var(--brand-primary-soft);
+
+  --background:  var(--brand-bg);
+  --foreground:  var(--brand-text);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Paksa tetap light mode — konsistensi psikologis branding */
+    --background: var(--brand-bg);
+    --foreground: var(--brand-text);
   }
 }
 
+html {
+  color-scheme: light;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.20);
+  color: inherit;
 }
